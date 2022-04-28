@@ -1,6 +1,6 @@
 # redact
 
-Redact safe values from structs and convert to map[string]interface{} for safe zap logging
+Redact secrets from structs and convert to map[string]interface{} for safe logging via zap logger.
 
 # example
 
