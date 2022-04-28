@@ -23,4 +23,4 @@ zap.L().Info("config", redact.Field("config", &Config{
 
 # author
 
-Peter Vrba <phonkee@phonnkee.eu>
+Peter Vrba <phonkee@phonkee.eu>
