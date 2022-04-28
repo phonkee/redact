@@ -79,14 +79,15 @@ func redact(value reflect.Value) (interface{}, bool) {
 				result = append(result, v)
 			}
 		}
-
 		return result, true
 	case reflect.Map:
-		result := make(map[interface{}]interface{})
+		var i interface{}
+		mapType := reflect.MapOf(value.Type().Key(), reflect.TypeOf(&i).Elem())
+		result := reflect.MakeMap(mapType)
 		iter := value.MapRange()
 		for iter.Next() {
 			if v, ok := redact(iter.Value()); ok {
-				result[iter.Key().Interface()] = v
+				result.SetMapIndex(iter.Key(), reflect.ValueOf(v))
 			}
 		}
 		return result, true
